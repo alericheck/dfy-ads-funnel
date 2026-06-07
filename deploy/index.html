@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Done For You Ads Management | AdOutreach - We Run, Optimize & Scale Your Ads</title>
+<meta name="description" content="The same YouTube & Meta ad system we've used for 3,000+ businesses - fully done for you, month-to-month, no long-term contract. For coaches, consultants, course creators & service businesses with $10k/mo+ ad budgets. Apply now.">
+<meta name="theme-color" content="#0A1F3C">
+<link rel="canonical" href="https://adoutreach.com/done-for-you-ads-management">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AdOutreach">
+<meta property="og:title" content="Done For You Ads Management - AdOutreach">
+<meta property="og:description" content="We run, optimize & scale your YouTube & Meta ads for you. The proven system behind 3,000+ businesses. Month-to-month, no long contract. Apply now.">
+<meta property="og:image" content="assets/og-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AdOutreach Done For You Ads Management - We run, optimize and scale your YouTube and Meta ads">
+<meta property="og:url" content="https://adoutreach.com/done-for-you-ads-management">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Done For You Ads Management - AdOutreach">
+<meta name="twitter:description" content="We run, optimize & scale your YouTube & Meta ads for you. The proven system behind 3,000+ businesses. Apply now.">
+<meta name="twitter:image" content="assets/og-share.jpg">
+<!-- favicon + perf -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<link rel="preconnect" href="https://i.ytimg.com">
+<link rel="preconnect" href="https://www.google.com">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="funnel.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="vsl-player.jsx"></script>
+<script type="text/babel" src="sections.jsx"></script>
+<script type="text/babel" src="faq-sections.jsx"></script>
+<script type="text/babel" src="apply.jsx"></script>
+<script type="text/babel">
+const { createRoot } = ReactDOM;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "heroLayout": "Video-first",
+  "offerLayout": "Timeline",
+  "ctaStyle": "Coral",
+  "videoMode": "YouTube video",
+  "captions": true,
+  "urgencyBar": true
+}/*EDITMODE-END*/;
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  useReveal();
+
+  const heroLayout = t.heroLayout === 'Split' ? 'split' : 'video';
+  const offerLayout = t.offerLayout === 'Cards' ? 'cards' : 'timeline';
+  const ctaStyle = t.ctaStyle === 'Gradient' ? 'gradient' : 'coral';
+  const videoMode = t.videoMode === 'Upload real video' ? 'upload' : (t.videoMode === 'Animated VSL' ? 'animated' : 'youtube');
+
+  return (
+    <React.Fragment>
+      <Nav />
+      <Hero heroLayout={heroLayout} videoMode={videoMode} captionsDefault={t.captions} ctaStyle={ctaStyle} />
+      <Marquee />
+      <OfferSection layout={offerLayout} />
+      <WhoForSection />
+      <Comparison />
+      <Founder />
+      <Testimonials />
+      <SupercutSection />
+      <WhatHappensSection />
+      <ApplySection ctaStyle={ctaStyle} />
+      <BookSection />
+      <ConsultingFallback />
+      <FAQSection />
+      <Footer />
+      <UrgencyBar show={t.urgencyBar} />
+
+      <TweaksPanel>
+        <TweakSection label="Layout" />
+        <TweakRadio label="Hero" value={t.heroLayout} options={['Video-first', 'Split']} onChange={(v) => setTweak('heroLayout', v)} />
+        <TweakRadio label="Offer" value={t.offerLayout} options={['Timeline', 'Cards']} onChange={(v) => setTweak('offerLayout', v)} />
+        <TweakSection label="Style" />
+        <TweakRadio label="CTA color" value={t.ctaStyle} options={['Coral', 'Gradient']} onChange={(v) => setTweak('ctaStyle', v)} />
+        <TweakToggle label="Spots-limited bar" value={t.urgencyBar} onChange={(v) => setTweak('urgencyBar', v)} />
+        <TweakSection label="Video" />
+        <TweakRadio label="Source" value={t.videoMode} options={['YouTube video', 'Animated VSL', 'Upload real video']} onChange={(v) => setTweak('videoMode', v)} />
+        <TweakToggle label="Captions on by default" value={t.captions} onChange={(v) => setTweak('captions', v)} />
+      </TweaksPanel>
+    </React.Fragment>
+  );
+}
+createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

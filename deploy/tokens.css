@@ -1,0 +1,264 @@
+/* =========================================================================
+   AdOutreach — Design Tokens
+   Colors, Type, Spacing, Radii, Shadows + semantic roles.
+   Import once and use via CSS vars or the utility-style classes at the end.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap');
+
+:root {
+  /* ---------- COLOR — brand (sampled from the logo) ---------- */
+  --ao-navy:            #0A1F3C;   /* primary brand background */
+  --ao-navy-800:        #0F2A44;   /* wordmark ink on light */
+  --ao-navy-700:        #13345A;
+  --ao-navy-600:        #1D4273;
+  --ao-ink:             #0F2A44;
+
+  --ao-green-300:       #A8F088;
+  --ao-green-400:       #7FE85C;   /* gradient start */
+  --ao-green-500:       #49DE32;   /* logo body — signal green */
+  --ao-green-600:       #2FBD1C;
+  --ao-green-700:       #1F9A10;
+
+  --ao-teal-400:        #00C2D6;   /* gradient end */
+  --ao-teal-500:        #00A7B2;   /* logo top-right */
+  --ao-teal-600:        #008A93;
+
+  --ao-coral:           #FF5A3C;   /* CTA accent (inferred) */
+  --ao-coral-dark:      #E04525;
+  --ao-sun:             #FFC93C;   /* testimonial/highlight */
+
+  /* ---------- COLOR — neutrals ---------- */
+  --ao-white:           #FFFFFF;
+  --ao-paper:           #F7F8FB;
+  --ao-fog:             #EEF1F6;
+  --ao-mist:            #D9DEE8;
+  --ao-steel:           #9AA4B8;
+  --ao-graphite:        #4B5876;
+
+  /* ---------- COLOR — semantic (light surface) ---------- */
+  --fg-1:               var(--ao-ink);       /* primary text */
+  --fg-2:               #334061;             /* secondary text */
+  --fg-3:               #6B7693;             /* muted text */
+  --fg-inverse:         #FFFFFF;
+
+  --bg-1:               #FFFFFF;
+  --bg-2:               var(--ao-paper);
+  --bg-3:               var(--ao-fog);
+  --bg-navy:            var(--ao-navy);
+  --bg-navy-2:          #0D254A;
+
+  --accent:             var(--ao-green-500);
+  --accent-hover:       var(--ao-green-600);
+  --cta:                var(--ao-coral);
+  --cta-hover:          var(--ao-coral-dark);
+  --link:               var(--ao-teal-500);
+
+  --border-light:       rgba(10,31,60,0.08);
+  --border-strong:      rgba(10,31,60,0.14);
+  --border-dark:        rgba(255,255,255,0.08);
+
+  --success:            var(--ao-green-500);
+  --warning:            var(--ao-sun);
+  --danger:             var(--ao-coral);
+  --info:               var(--ao-teal-500);
+
+  /* ---------- SIGNATURE GRADIENT ---------- */
+  --ao-gradient:        linear-gradient(135deg, #7FE85C 0%, #49DE32 35%, #00A7B2 75%, #00C2D6 100%);
+  --ao-gradient-soft:   linear-gradient(135deg, rgba(127,232,92,0.16), rgba(0,194,214,0.16));
+  --ao-gradient-dark:   linear-gradient(180deg, #0A1F3C 0%, #08182E 100%);
+  --ao-gradient-hero:   radial-gradient(1200px 600px at 70% -10%, rgba(0,194,214,0.24), transparent 60%),
+                         radial-gradient(800px 500px at 10% 20%, rgba(73,222,50,0.18), transparent 60%),
+                         linear-gradient(180deg, #0A1F3C 0%, #060F22 100%);
+
+  /* ---------- TYPE ---------- */
+  --font-display:       'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-body:          'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-script:        'Caveat', 'Brush Script MT', cursive;
+  --font-mono:          ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* type scale (desktop-first) */
+  --fs-display-xl:      clamp(48px, 6.2vw, 88px);
+  --fs-display-lg:      clamp(40px, 4.8vw, 64px);
+  --fs-display:         clamp(32px, 3.6vw, 48px);
+  --fs-h1:              clamp(32px, 3vw, 44px);
+  --fs-h2:              clamp(26px, 2.2vw, 36px);
+  --fs-h3:              22px;
+  --fs-h4:              18px;
+  --fs-lead:            20px;
+  --fs-body:            16px;
+  --fs-sm:              14px;
+  --fs-xs:              12px;
+  --fs-eyebrow:         13px;
+
+  --lh-tight:           1.08;
+  --lh-heading:         1.18;
+  --lh-body:            1.55;
+  --lh-loose:           1.7;
+
+  --tr-tight:           -0.02em;
+  --tr-heading:         -0.01em;
+  --tr-body:            0;
+  --tr-eyebrow:         0.14em;
+
+  /* ---------- SPACING ---------- */
+  --s-0:                0;
+  --s-1:                4px;
+  --s-2:                8px;
+  --s-3:                12px;
+  --s-4:                16px;
+  --s-5:                24px;
+  --s-6:                32px;
+  --s-7:                48px;
+  --s-8:                64px;
+  --s-9:                96px;
+  --s-10:               128px;
+
+  /* ---------- RADII ---------- */
+  --r-xs:               4px;
+  --r-sm:               8px;
+  --r-md:               12px;
+  --r-lg:               20px;
+  --r-xl:               28px;
+  --r-pill:             9999px;
+
+  /* ---------- SHADOWS ---------- */
+  --sh-sm:              0 1px 2px rgba(10,31,60,0.06), 0 1px 3px rgba(10,31,60,0.08);
+  --sh-md:              0 8px 24px rgba(10,31,60,0.10);
+  --sh-lg:              0 20px 60px rgba(10,31,60,0.18);
+  --sh-xl:              0 30px 80px rgba(10,31,60,0.28);
+  --sh-inset:           inset 0 1px 0 rgba(255,255,255,0.06);
+  --sh-glow-green:      0 0 40px rgba(73,222,50,0.35);
+  --sh-glow-teal:       0 0 40px rgba(0,194,214,0.35);
+  --sh-glow-coral:      0 8px 24px rgba(255,90,60,0.35), 0 0 24px rgba(255,90,60,0.25);
+
+  /* ---------- MOTION ---------- */
+  --ease-out:           cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:        cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1:              120ms;
+  --dur-2:              200ms;
+  --dur-3:              360ms;
+  --dur-4:              600ms;
+
+  /* ---------- Z ---------- */
+  --z-nav:              50;
+  --z-modal:            100;
+  --z-toast:            200;
+
+  /* ---------- LAYOUT ---------- */
+  --container:          1200px;
+  --container-wide:     1440px;
+  --nav-h:              72px;
+}
+
+/* ===== Dark surface token remap (apply .ao-dark on a wrapper) ===== */
+.ao-dark {
+  --fg-1:               #FFFFFF;
+  --fg-2:               rgba(255,255,255,0.82);
+  --fg-3:               rgba(255,255,255,0.62);
+  --bg-1:               var(--ao-navy);
+  --bg-2:               #0D254A;
+  --bg-3:               #123061;
+  --border-light:       rgba(255,255,255,0.08);
+  --border-strong:      rgba(255,255,255,0.16);
+}
+
+/* ========================================================================= */
+/*  SEMANTIC ELEMENTS                                                        */
+/* ========================================================================= */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, .display {
+  font-family: var(--font-display);
+  color: var(--fg-1);
+  letter-spacing: var(--tr-heading);
+  line-height: var(--lh-heading);
+  font-weight: 700;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.display-xl { font-size: var(--fs-display-xl); line-height: var(--lh-tight); letter-spacing: var(--tr-tight); font-weight: 800; }
+.display-lg { font-size: var(--fs-display-lg); line-height: var(--lh-tight); letter-spacing: var(--tr-tight); font-weight: 800; }
+.display    { font-size: var(--fs-display);    line-height: var(--lh-heading); font-weight: 700; }
+
+h1, .h1 { font-size: var(--fs-h1); font-weight: 800; }
+h2, .h2 { font-size: var(--fs-h2); font-weight: 700; }
+h3, .h3 { font-size: var(--fs-h3); font-weight: 600; }
+h4, .h4 { font-size: var(--fs-h4); font-weight: 600; }
+
+p, .body { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--fg-2); margin: 0 0 var(--s-4); }
+.lead    { font-size: var(--fs-lead); line-height: 1.5; color: var(--fg-2); }
+.small   { font-size: var(--fs-sm);  color: var(--fg-3); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ao-green-500);
+}
+
+.script { font-family: var(--font-script); font-weight: 700; }
+
+code, pre { font-family: var(--font-mono); }
+code      { font-size: 0.92em; padding: 2px 6px; border-radius: var(--r-xs); background: var(--bg-3); color: var(--fg-1); }
+
+a { color: var(--link); text-decoration: none; transition: color var(--dur-2) var(--ease-out); }
+a:hover { color: var(--ao-teal-400); text-decoration: underline; }
+
+hr { border: 0; border-top: 1px solid var(--border-light); margin: var(--s-6) 0; }
+
+/* ---- Gradient text helper (AdOutreach signature) ---- */
+.ao-gradient-text {
+  background: var(--ao-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---- Protection gradient over imagery ---- */
+.ao-protection-gradient::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,31,60,0) 0%, rgba(10,31,60,0.85) 100%);
+  pointer-events: none;
+}
+
+/* ---- Container ---- */
+.ao-container { max-width: var(--container); margin: 0 auto; padding: 0 var(--s-5); }
+.ao-container-wide { max-width: var(--container-wide); margin: 0 auto; padding: 0 var(--s-5); }
+
+/* ---- Common button recipe (full components live in UI kit) ---- */
+.ao-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 700; letter-spacing: 0.02em;
+  padding: 14px 26px; border-radius: var(--r-pill);
+  border: 0; cursor: pointer;
+  transition: transform var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out);
+  text-decoration: none;
+}
+.ao-btn-primary   { background: var(--ao-coral); color: #fff; box-shadow: var(--sh-glow-coral); }
+.ao-btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); }
+.ao-btn-primary:active{ transform: translateY(0) scale(0.98); }
+
+.ao-btn-gradient  { background: var(--ao-gradient); color: #0A1F3C; }
+.ao-btn-gradient:hover { transform: translateY(-1px); box-shadow: var(--sh-glow-green); }
+
+.ao-btn-ghost     { background: transparent; color: var(--fg-1); border: 1.5px solid var(--border-strong); }
+.ao-btn-ghost:hover { border-color: var(--ao-green-500); color: var(--ao-green-700); }
+
+.ao-btn-dark-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.28); }
+.ao-btn-dark-ghost:hover { border-color: var(--ao-green-400); color: var(--ao-green-400); }
